@@ -42,4 +42,15 @@ public class AccountsService {
         return accountsRepository.save(account);
     }
 
+    public Accounts getAccountById(Long id) {
+        return accountsRepository.findById(id).orElseThrow(()->new RuntimeException("User not found with "+id));
+    }
+
+    public boolean deleteAccountById(Long id) {
+        if(accountsRepository.existsById(id)){
+            accountsRepository.deleteById(id);
+            return true;
+        }
+        return false;
+    }
 }
