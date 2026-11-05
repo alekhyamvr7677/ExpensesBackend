@@ -53,4 +53,14 @@ public class AccountsService {
         }
         return false;
     }
+
+    public Accounts updateAccountById(Long id, AccountRequest request) {
+        Accounts existingProduct = accountsRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Product not found with id: " + id));
+        existingProduct.setBankName(request.getBankName());
+        existingProduct.setAccountType(request.getAccountType());
+        existingProduct.setOpeningBalance(request.getOpeningBalance());
+        existingProduct.setCurrency(request.getCurrency());
+        return accountsRepository.save(existingProduct);
+    }
 }

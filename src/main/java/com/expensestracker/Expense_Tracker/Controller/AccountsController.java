@@ -36,10 +36,17 @@ public class AccountsController {
     public ResponseEntity<String> deleteAccountById(@PathVariable Long id){
         boolean isDeleted = accountsService.deleteAccountById(id);
         if(isDeleted){
-            return ResponseEntity.ok("user deleted successfully" +id);
+            return ResponseEntity.ok("user deleted successfully with id " + id);
 
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("user not found with Id"+id);
+    }
+
+
+    @PutMapping("/accounts/update/{id}")
+    public ResponseEntity<Accounts> updateAccountById(@PathVariable Long id, @RequestBody AccountRequest request){
+        Accounts accounts = accountsService.updateAccountById(id, request);
+        return ResponseEntity.ok(accounts);
     }
 
 
