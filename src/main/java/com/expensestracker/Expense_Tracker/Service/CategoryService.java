@@ -26,4 +26,8 @@ public class CategoryService {
         categories.setCategoryType(categoryRequest.getCategoryType());
         return categoryRepository.save(categories);
     }
+
+    public Categories getCategorybyId(Integer id) {
+        return categoryRepository.findById(id).orElseThrow(()->new RuntimeException("User not found with "+id));
+    }
 }

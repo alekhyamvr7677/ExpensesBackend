@@ -20,7 +20,7 @@ public class Transactions {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long transactionId;
-    private BigDecimal Amount;
+    private BigDecimal amount;
     private String description;
 
     @Enumerated(EnumType.STRING)
@@ -49,4 +49,6 @@ public class Transactions {
     }
 
 
+    public void setTransactionDate(LocalDateTime transactionDate) {
+    }
 }
